@@ -1,0 +1,40 @@
+html, body { 
+ 	height: 100%; 
+ 	margin: 0; 
+ 	padding: 0; 
+    }
+      
+#map { 
+	height: 100%; 
+	width: 100%;
+	float: right;
+    }
+
+#searchbox {
+	margin-left: 10%;
+	margin-right: 25%;
+	margin-top: 50px;
+	width: 60%;
+	box-shadow: 5px 5px 5px gray;
+	font-size: 20px;
+	}
+
+.searchpannel {
+	left: 0px;  
+	height: 100%;
+	position: fixed;
+	width: 20%;
+    }
+
+#searchlist {
+    list-style-type: none;
+    cursor: pointer;
+    }
+
+#searchlistitems {
+    padding: 10px 0 10px 7px;
+    background-color: blue;
+	margin: 1px 0;
+	border-radius: 5px;
+	color: white;
+    }
