@@ -39,34 +39,36 @@ var locations = [
 function initMap() {
   var self = this;
   self.yelpStars = [];
+  //self.yelpStars = ko.observableArray([]);
   self.place = locations;
   self.markers = [];
   self.yelp_Id = [];
 
   self.imgStars = [];
-  self.addresses =[];
+  //self.addresses =[];
 //initian lat and lng of the map view
- var myLatLng = {lat: 40.001451, lng: -83.017459};
+   var myLatLng = {lat: 40.001451, lng: -83.017459};
 
-//applying the map to the HTML file
-     map = new google.maps.Map(document.getElementById('map'), {
-     zoom: 13,
-     center: myLatLng
-  });
-  
+  //applying the map to the HTML file
+       map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 13,
+       center: myLatLng
+   });
+    
 
 /*Infowindow has been moved outside of the scope so when a new
 marker is clicked the previous marker infowindow closes.*/
   var infowindow = new google.maps.InfoWindow();
 
 //iterate over the locations in the model and create an new marker for each location
-for(var i = 0; i < place.length; i++){
+  for(var i = 0; i < place.length; i++){
   
     var marker = new google.maps.Marker({
       
       position: new google.maps.LatLng(place[i][0], place[i][1]),
       map: map,
       title: place[i][2],
+      rating: "",
       animation: google.maps.Animation.DROP
       
 
@@ -80,6 +82,8 @@ for(var i = 0; i < place.length; i++){
     //Pushs the Yelp ID to variable yelp_ID
     yelp_Id.push(place[i][3]);
 
+
+
  //Generates a random number and returns it as a string for OAuthentication
     function nonce_generate() {
       return (Math.floor(Math.random() * 1e12).toString());
@@ -89,8 +93,8 @@ for(var i = 0; i < place.length; i++){
     var yelp_url = 'https://api.yelp.com/v2/business/' + yelp_Id[i];
 
     var parameters = {
-      oauth_consumer_key: 'Key',
-      oauth_token: 'Key',
+      oauth_consumer_key: '7H2uLGkdiD0oLvt8kJeJFA',
+      oauth_token: 'n9S5JNeFqoQKTV3iZ591eDd4hiiq08cQ',
       oauth_nonce: nonce_generate(),
       oauth_timestamp: Math.floor(Date.now()/1000),
       oauth_signature_method: 'HMAC-SHA1',
@@ -98,7 +102,7 @@ for(var i = 0; i < place.length; i++){
       callback: 'cb'              // This is crucial to include for jsonp implementation in AJAX or else the oauth-signature will be wrong.
     };
 
-    var encodedSignature = oauthSignature.generate('GET',yelp_url, parameters, 'Key', 'Key');
+    var encodedSignature = oauthSignature.generate('GET',yelp_url, parameters, 'Xrg10bFRdYiviMOPEorrk8koSN8', '8d65lHm_1wTkzn9p7jJ4RzQ7J-k');
     parameters.oauth_signature = encodedSignature;
 
     var settings = {
@@ -108,21 +112,24 @@ for(var i = 0; i < place.length; i++){
       dataType: 'jsonp',
       
       success: function(results) {
-  console.log(results);
-            for(var i = 0; i < length; i++){
-                self.yelpStars.push(results.rating_img_url_small);
-                 
-             }
             
-            for(var i = 0; i < yelpStars.length; i++){
-                self.starRating = '<img src=' + yelpStars[i] + '>';
 
-             }
-                  
-                  //self.addresses.push(results.location.display_address);
-            imgStars.push(starRating);
+            
+            var ratingsImage = '<img src="' + results.rating_img_url_large + '">' + "<div>" + results.location.address + "</div>";
+            
+              function sort(){
+                ratingsImage.sort();
+              }
 
-                },
+
+            console.log(ratingsImage);
+            yelpStars.push(ratingsImage);
+                for(var i = 0; i < markers.length; i++){
+                     markers[i].rating = yelpStars[i];
+                }
+
+      },
+      
       error: function(error) {
               console.log(error);
           //TODO: fix error function
@@ -142,7 +149,7 @@ for(var i = 0; i < place.length; i++){
 
             //content of the marker window
             self.content = place[i][2];
-            self.img = imgStars;
+            self.img = markers.rating;
 
             //Event listiner for infowindow which adds title and star rating
             google.maps.event.addListener(marker, 'click', (function(marker,content,infowindow,img){
@@ -167,7 +174,7 @@ for(var i = 0; i < place.length; i++){
                       stopAnimation(self);
                         }
                       }
-                    }
+  
 
                   //function that stops the bouncing map marker after 2 bounces
                     function stopAnimation(self) {
@@ -209,9 +216,10 @@ for(var i = 0; i < place.length; i++){
               }
 
             });
+  }
 
 
- };
+  };
 
 
 ko.applyBindings(new search());

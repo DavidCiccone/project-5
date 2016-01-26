@@ -15,8 +15,8 @@
     
     <div>
       <ul id="searchlist" data-bind="foreach: listSearch()">
-        <li id="searchlistitems" data-bind="text: title, click: clickList" >
-        </li>
+        <li id="searchlistitems" data-bind="html:title + rating, click: clickList" >
+       
       </ul>
     </div>
 
@@ -27,7 +27,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=initMap" async></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/knockout/dist/knockout.js"></script>
-    <script src="bower_components/oauth-signature.min.js" async defer></script>
+    <script src="bower_components/oauth-signature.min.js"></script>
     <script src="js/Map.js" async></script>
 
   </body>
