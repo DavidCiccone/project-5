@@ -220,6 +220,3 @@ function viewModel() {
      function clickList(markers) {
      google.maps.event.trigger(markers, 'click');
      }
-
-
-                                     
