@@ -2,39 +2,81 @@ html, body {
  	height: 100%; 
  	margin: 0; 
  	padding: 0; 
+ 	background-color: black;
     }
       
 #map { 
 	height: 100%; 
-	width: 100%;
+	width: 80%;
 	float: right;
-    }
+  }
 
 #searchbox {
-	margin-left: 10%;
 	margin-right: 25%;
 	margin-top: 50px;
-	width: 60%;
-	box-shadow: 5px 5px 5px gray;
+	width: 100%;
+	padding: 5px 0;
 	font-size: 20px;
+	font-family: 'Bangers', cursive;
 	}
 
 .searchpannel {
 	left: 0px;  
-	height: 100%;
-	position: fixed;
+	background-color: black;
 	width: 20%;
-    }
+	font-family: 'Bangers', cursive;
+  }
 
 #searchlist {
-    list-style-type: none;
-    cursor: pointer;
-    }
+  list-style-type: none;
+  cursor: pointer;
+  padding-left: 0px;
+  }
 
 #searchlistitems {
-    padding: 10px 0 10px 7px;
-    background-color: blue;
-	margin: 1px 0;
-	border-radius: 5px;
-	color: white;
-    }
+  padding: 10px 0 10px 7px;
+  background-color: black;
+  color: white;
+  letter-spacing: 1.5px;
+  }
+
+#header {
+  font-size: 28px;
+  text-align: center;
+  padding: 20px 0;
+  background-color: white;
+  }
+
+#reviewtext {
+  width: 50%;
+  float: right;
+  margin-left: 15px;
+  }
+
+#infowindowframe {
+  width: 250px;
+  }
+
+#placeimage {
+  float: left;
+  }
+
+  @media (max-width: 725px) {
+  #searchlistitems {
+    padding: 0;
+    font-size: 12px;
+    letter-spacing: .5px;
+  }
+}
+
+ @media (max-width: 725px) {
+  #searchbox {
+margin-top: -25px;
+  }
+}
+
+ @media (max-width: 725px) {
+  #header {
+font-size: 12px;
+  }
+}

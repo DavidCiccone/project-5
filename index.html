@@ -3,32 +3,27 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-
-
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
-<body>
-  <div id="map"></div>
-    <div id="search" class="searchpannel">
-    
-   <input id="searchbox" type="search" placeholder="Search" data-bind="textInput: enteredText, valueUpdate: 'keyup'"/>
-    
-    <div>
-      <ul id="searchlist" data-bind="foreach: listSearch()">
-        <li id="searchlistitems" data-bind="html:title + rating, click: clickList" >
-       
-      </ul>
-    </div>
+  <body>
 
+    <div id="map"></div>
+      <div id="search" class="searchpannel">
+        <h1 id="header">CrossFit gyms of Columbus Ohio</h1>
+        <input id="searchbox" type="search" placeholder="Search..." data-bind="textInput: enteredText, valueUpdate: 'keyup'"/>
+          <div>
+            <ul id="searchlist" data-bind="foreach: listSearch">
+              <h3><li id="searchlistitems" data-bind="html:title, click: clickList" ></h3>
+            </ul>
+          </div>
+      </div>
 
-
-  
-   </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=initMap" async></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/knockout/dist/knockout.js"></script>
-    <script src="bower_components/oauth-signature.min.js"></script>
-    <script src="js/Map.js" async></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" async></script>
+      <script src="bower_components/knockout/dist/knockout.js" async></script>
+      <script src="bower_components/oauth-signature.min.js" async></script>
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="js/Map.js" async></script>
 
   </body>
 </html>
