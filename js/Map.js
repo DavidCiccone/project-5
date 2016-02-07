@@ -60,31 +60,29 @@ var locations = [
   'Crossfit 1803',
   'crossfit-1803-lewis-center'
 ]
-]
-
+];
+ 
 
 
 //Initiate the map
 function viewModel() {
   var self = this;
   var map = null;
-  self.place = locations;
-  self.markers = [];
+  var place = locations;
+  var markers = [];
 
  
   //initian lat and lng of the map view
-   var myLatLng = {lat: 40.062308, lng: -83.010292};
+   var myLatLng = {lat: 40.052191, lng: -82.984457};
 
       //applying the map to the HTML file
        map = new google.maps.Map(document.getElementById('map'), {
        zoom: 12,
        center: myLatLng
    });
-  var search = function() {
-      var self = this;
-      self.markersArray = ko.observableArray(markers);
-      self.enteredText = ko.observable(''); 
-       
+  
+     
+      
        /*Infowindow has been moved outside of the scope so when a new
          marker is clicked the previous marker infowindow closes.*/
       var infowindow = new google.maps.InfoWindow();
@@ -99,6 +97,16 @@ function viewModel() {
                   title: place[i][2],
                   animation: google.maps.Animation.DROP
                 });
+                          
+               //fits the markers within the bounds of the viewport on load
+               var fitToPage1 = new google.maps.LatLng(40.159153, -83.083815);
+               var fitToPage2 = new google.maps.LatLng(39.964754, -82.810993);
+
+               var bounds = new google.maps.LatLngBounds();
+                   bounds.extend(fitToPage1);
+                   bounds.extend(fitToPage2);
+                   map.fitBounds(bounds);
+
             // Pushes newly created markers to var markers
              markers.push(marker);
 
@@ -134,17 +142,17 @@ function viewModel() {
                                 console.log(results);
                                   
                                    //content of each infowindow
-                                   var infoWindowContent ='<div id="infowindowframe"><h1><a href="http://www.yelp.com/biz/' + yelpContent + '">' + results.name + '</a>' +'</h1>' + '<div><img src="' + 
+                                   var infoWindowContent ='<div id="infowindowframe"><h2><a href="http://www.yelp.com/biz/' + yelpContent + '">' + results.name + '</a>' +'</h2>' + '<div><img src="' + 
                                                            results.rating_img_url + '"></div>' + '<h3>' + results.location.address + 
                                                            '</h3>' + '<div id="placeimage"><img src="' + results.image_url + '"></div>' + '<div id="reviewtext">' + results.snippet_text + '</div></div>';
                                
                                     infowindow.setContent(infoWindowContent);
                               },
                               //If request is not successful the error function is execuited
-                              error: function(error) {
+                              error: function(err) {
                                       var error = "No Yelp Information Available :(";
-                                      if(error){
-                                      infowindow.setContent( '<h1>' + content + '</h1>' + error);
+                                      if(err){
+                                      infowindow.setContent( '<h1>' + content + '</h1>' + error + '<br><br><br><br><br><br><br><br><br><br><br><br>');
                                       }
                                
                               }
@@ -152,7 +160,7 @@ function viewModel() {
 
                                   // Send AJAX query via jQuery library.
                                   $.ajax(settings);
-                       }                            
+                       };                            
                     //Function that retrieves the Yelp data ends here
                  
                     var content = place[i][2];
@@ -163,7 +171,10 @@ function viewModel() {
                     google.maps.event.addListener(marker, 'click', (function(marker,infowindow,yelpContent,content){
                       return function() {
                         infowindow.open(map, this);
+                        
                         getYelpData(yelpContent, content);
+                        map.panTo(marker.getPosition());
+                       
                       };
                     })(marker,infowindow,yelpContent,content));
 
@@ -185,12 +196,22 @@ function viewModel() {
                               setTimeout(function(){ 
                                   self.setAnimation(null); }, 1450);
                             }
-                      //creates the list of places on the left of the screen and applies a filter based on the entered text
+                      //activates the corresponding map marker on click of the list item 
+                       this.clickList = function(markers) {
+                       google.maps.event.trigger(markers, 'click');
+                       };
+                      
+                      var search = function() {
+                        self.markersArray = ko.observableArray(markers);
+                        self.enteredText = ko.observable('');
+                       //creates the list of places on the left of the screen and applies a filter based on the entered text
                         self.listSearch = ko.computed(function(){
                           return ko.utils.arrayFilter(self.markersArray(), function(item){
                             return item.title.toLowerCase().indexOf(self.enteredText().toLowerCase()) >= 0;
                           });
                         });
+
+                      
 
                         //connects the markers to the search box and hides or shows based on its input
                         self.markerFilter = ko.computed(function(){
@@ -206,17 +227,19 @@ function viewModel() {
                              function closeInfoWindow() {
                               infowindow.close();
                              };
+                          
                           }
 
                         });
       }
-  };
+                      };
   
   ko.applyBindings(new search());
 
-};
-
-     //activates the corresponding map marker on click of the list item 
-     function clickList(markers) {
-     google.maps.event.trigger(markers, 'click');
-     }
+};   
+ //If google map is not available function is run
+       function mapLoadError(){
+          alert('Google Maps is not available :(');
+            console.log('Google Maps is not available :(');
+       }
+ 

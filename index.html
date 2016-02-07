@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
   </head>
   <body>
 
@@ -19,11 +21,13 @@
           </div>
       </div>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" async></script>
-      <script src="bower_components/knockout/dist/knockout.js" async></script>
-      <script src="bower_components/oauth-signature.min.js" async></script>
-      <script src="bower_components/jquery/dist/jquery.min.js" async></script>
-      <script src="js/Map.js" async></script>
+  <script src="js/Map.js" async></script> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" onerror="mapLoadError()" async defer></script>
+  <script src="bower_components/knockout/dist/knockout.js" async></script>
+  <script src="bower_components/oauth-signature.min.js" async></script>
+  <script src="bower_components/jquery/dist/jquery.min.js" async></script> 
+
+      
 
   </body>
 </html>
