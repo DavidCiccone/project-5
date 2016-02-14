@@ -141,12 +141,13 @@ function viewModel() {
                                 console.log(results);
                                   
                                    //content of each infowindow
-                                   var infoWindowContent ='<div id="infowindowframe"><h1><a href="http://www.yelp.com/biz/' + yelpContent + '">' + results.name + '</a>' +'</h1>' + '<div><img src="' + 
+                                   var infoWindowContent ='<div id="infowindowframe" style=""><h1><a href="http://www.yelp.com/biz/' + yelpContent + '">' + results.name + '</a>' +'</h1>' + '<div><img src="' + 
                                                            results.rating_img_url + '"></div>' + '<h3>' + results.location.address + 
                                                            '</h3>' + '<div id="placeimage"><img src="' + results.image_url + '"></div>' + '<div id="reviewtext">' + results.snippet_text + '</div></div>';
                                
                                     infowindow.setContent(infoWindowContent);
                                     infowindow.open(map);
+                                     
                               },
                               //If request is not successful the error function is execuited
                               error: function(err) {
@@ -154,6 +155,7 @@ function viewModel() {
                                       if(err){
                                       infowindow.setContent( '<h1>' + content + '</h1>' + '<h4>' + error + '<h4>');
                                       infowindow.open(map);
+                                     
                                       }
                                
                               }
@@ -174,7 +176,6 @@ function viewModel() {
                         infowindow.open(map, this);
                         infowindow.close(map);
                         getYelpData(yelpContent, content);
-                        map.panTo(marker.position);
                        
                       };
                     })(marker,infowindow,yelpContent,content));
