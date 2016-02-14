@@ -3,7 +3,7 @@ var locations = [
 [
   39.998788, 
   -83.031421, 
-  'CrossFit Grandview',
+  'CrossFit',
   'crossfit-grandview-columbus'
 ], 
 [
@@ -205,7 +205,7 @@ function viewModel() {
                       //if the info window is open and the makrers are filtered this closes the info window 
                       function closeInfoWindow() {
                         infowindow.close();
-                      }
+                      };
                       
                       var search = function() {
                         self.markersArray = ko.observableArray(markers);
@@ -238,11 +238,11 @@ function viewModel() {
                           }
 
                         });
-      };
-                      }
+      }
+                      };
   
   ko.applyBindings(new search());
 
-} 
+};   
 
  
