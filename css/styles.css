@@ -92,6 +92,8 @@ body {
 @media (max-width: 725px) {
   #infowindowframe {
    width: 200px;
+   /* max-height:250px;
+    overflow-y:auto;*/
   }
 }
 
