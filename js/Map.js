@@ -176,7 +176,7 @@ function viewModel() {
                         infowindow.open(map, this);
                         infowindow.close(map);
                         getYelpData(yelpContent, content);
-                       
+                     
                       };
                     })(marker,infowindow,yelpContent,content));
 
