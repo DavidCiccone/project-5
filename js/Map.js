@@ -68,7 +68,7 @@ function viewModel() {
 
     //applying the map to the HTML file
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 11,
         center: myLatLng
     });
 
@@ -97,8 +97,10 @@ function viewModel() {
         var bounds = new google.maps.LatLngBounds();
         bounds.extend(fitToPage1);
         bounds.extend(fitToPage2);
-        map.fitBounds(bounds);
-
+        
+        window.onresize = function(){
+            map.fitBounds(bounds);
+        }   
         // Pushes newly created markers to var markers
         markers.push(marker);
 
@@ -156,8 +158,8 @@ function viewModel() {
 
             // Send AJAX query via jQuery library.
             $.ajax(settings);
-        };
-        //Function that retrieves the Yelp data ends here
+        };//Function that retrieves the Yelp data ends here
+        
 
         var content = place[i][2];
         //Unique yelp URL for each location
@@ -190,7 +192,7 @@ function viewModel() {
         function stopAnimation(self) {
             setTimeout(function() {
                 self.setAnimation(null);
-            }, 1450);
+            }, 1400);
         }
         //activates the corresponding map marker on click of the list item 
         this.clickList = function(markers) {
@@ -201,6 +203,8 @@ function viewModel() {
         function closeInfoWindow() {
             infowindow.close();
         }
+
+
 
         var search = function() {
             self.markersArray = ko.observableArray(markers);
@@ -223,7 +227,7 @@ function viewModel() {
                         if ($(window).width() < 725) {
                             map.setZoom(10);
                         } else {
-                            map.setZoom(12);
+                            map.setZoom(11);
                         }
                     } else {
                         markers[i].setVisible(false);

@@ -1,58 +1,61 @@
+
+
 html, 
 body { 
  	height: 100%; 
- 	margin: 0; 
- 	padding: 0; 
+  margin: 0;
  	background-color: black;
   }
       
 #map { 
 	height: 100%; 
-	width: 80%;
+	width: 100%;
 	float: right;
   }
 
 #searchbox {
-	margin-right: 25%;
-	margin-top: 50px;
-	width: 100%;
+	
+	
+	width: 250px;
 	padding: 5px 0;
 	font-size: 20px;
-	font-family: 'Bangers', cursive;
+	font-family: 'Roboto', sans-serif;
 	}
+
+  .search-font {
+    font-family: 'Roboto', sans-serif;
+    
+  }
 
 .searchpannel {
 	left: 0px;  
 	background-color: black;
 	width: 20%;
-	font-family: 'Bangers', cursive;
+	font-family: 'Roboto', sans-serif;
   }
 
 #searchlist {
   list-style-type: none;
   cursor: pointer;
   padding-left: 0px;
+  margin-top: 0;
   }
 
 #searchlistitems {
-  padding: 20px 0 20px 7px;
+  padding: 15px 0 15px 7px;
   background-color: black;
   color: white;
   letter-spacing: 1.5px;
-  font-size: 18px;
-  border-top-style: solid;
-  border-bottom-style: solid;
-  border-color: white;
-  margin-bottom: -3px;
-  margin-right: 5px;
-  margin-left: 5px;
+  font-size: 12px; 
   }
 
 #header {
   font-size: 28px;
   text-align: center;
-  padding: 20px 0;
-  background-color: white;
+  
+  background-color: black;
+  color:white;
+  font-family: 'Bangers', cursive;
   }
 
 #reviewtext {
@@ -68,24 +71,87 @@ body {
 #placeimage {
   float: left;
   }
+.overmap {
+  position: absolute;
+  margin: 1em auto 0 auto;
+  z-index: 99;
+  top: 5%;
+}
+
+.overmap2 {
+  position: absolute;
+  z-index: 99;
+  left: 77%;
+  top: 5%;
+}
+
+img#menu-button {
+  float: right;
+}
+.xxx {
+  float: right;
+}
+.search-bar {
+  width: 84%;
+  margin-left: .25em;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 5px;
+  border-radius: 0  5px 0 0;
+}
+
+.filler {
+  background-color: black;
+  height: 48px;
+  width: calc(100% - 48px);
+  display: inline-block;
+  margin-bottom: -5px;
+}
+
+.search-buttons {
+  width: 15%;
+}
+.button-inline {
+  display: inline-block;
+}
+
+.searchButton {
+  height: 36px;
+  padding-top: 7px;
+  margin: 0;
+  border-radius:0 5px 5px 0;
+}
+
+/* --- Menu Button Styling ---*/
+
+#menu-button {
+  position: relative;
+  text-align: right;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
 
 @media (max-width: 725px) {
   #searchlistitems {
-    padding: 0;
-    font-size: 12px;
+    padding: 10px 0;
+    
     letter-spacing: .5px;
   }
 }
 
-@media (max-width: 725px) {
-  #searchbox {
-   margin-top: -25px;
+@media screen and (max-width: 725px) {
+  .overmap2  {
+   left: 3%;
+   top: 20%;
   }
 }
 
 @media (max-width: 725px) {
   #header {
-   font-size: 12px;
+  
   }
 }
 
@@ -103,4 +169,8 @@ body {
    width: 75%;
    margin-left: 1px;
   }
+}
+
+.xxx {
+  display: inline-block;
 }

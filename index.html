@@ -4,27 +4,41 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>CrossFit Gyms of Columbus Ohio</title> 
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/styles.css">
 
   </head>
   <body>
-    <div id="map"></div>
-      <div id="search" class="searchpannel">
-        <h1 id="header">CrossFit gyms of Columbus Ohio</h1>
-         <input id="searchbox" type="search" placeholder="Search..." data-bind="textInput: enteredText"/>
-          <div>
-            <ul id="searchlist" data-bind="foreach: listSearch">
-              <li id="searchlistitems" data-bind="html:title, click: clickList">
-            </ul>
+    
+    
+      <div class="overmap">
+         
+          <h1 id="header">CrossFit gyms of Columbus Ohio</h1>
+          <div class="filler"></div>
+          <img src="images\hamburger-menu.jpg" id="menu-button">
+        
+          <div class="search-font">
+              <ul id="searchlist" data-bind="foreach: listSearch">
+                  <li id="searchlistitems" data-bind="html:title, click: clickList">
+              </ul>
           </div>
+      </div>
+           <div class="overmap2 xxx">
+            <input id="searchbox" type="search" placeholder="Search..." data-bind="textInput: enteredText" />
+            <button type="submit" class="searchButton">Search</button>
+          </div>
+      <div id="map"></div>
+      <div id="search" class="searchpannel">
+
       </div>
 
   <script src="bower_components/mapfail.js"></script> 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" onerror="mapLoadError()" async></script>
-  <script src="dist/all.min.js"></script> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&libraries=places&callback=viewModel" onerror="mapLoadError()" async></script>
+  <script src="js/Map.js"></script>  
   <script src="bower_components/oauth-signature.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script> 
   <script src="bower_components/knockout/dist/knockout.js"></script>
+  <script src="js/menuButton.js"></script>
   </body>
 </html>
