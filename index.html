@@ -26,19 +26,21 @@
       </div>
            <div class="overmap2 xxx">
             <input id="searchbox" type="search" placeholder="Search..." data-bind="textInput: enteredText" />
-            <button type="submit" class="searchButton">Search</button>
+            <!--<button type="submit" class="searchButton">Search</button>-->
           </div>
       <div id="map"></div>
       <div id="search" class="searchpannel">
 
       </div>
 
-<script src="bower_components/mapfail.js"></script> 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" onerror="mapLoadError()" async></script>
+   
   <script src="bower_components/knockout/dist/knockout.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script> 
+  <script src="bower_components/mapfail.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrxZKZaquOkNF7uBEWuq_zjBCcZzMT1is&signed_in=true&libraries=places&callback=viewModel" onerror="mapLoadError()" async></script>
   <script src="js/Map.js"></script> 
-  <script src="bower_components/oauth-signature.min.js"></script>
   <script src="js/menuButton.js"></script>
-</body>
+  <script src="bower_components/oauth-signature.min.js"></script>
+
+  </body>
 </html>
