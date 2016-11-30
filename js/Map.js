@@ -86,8 +86,8 @@ function viewModel() {
             position: new google.maps.LatLng(place[i][0], place[i][1]),
             map: map,
             title: place[i][2],
-            animation: google.maps.Animation.DROP,
-            icon: 'images/mapicon.png'
+            animation: google.maps.Animation.DROP
+            
         });
 
         //fits the markers within the bounds of the viewport on load
