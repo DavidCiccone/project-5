@@ -41,7 +41,7 @@ body {
   margin-top: 0;
   }
 
-#searchlistitems {
+.searchlistitems {
   padding: 15px 0 15px 7px;
   background-color: black;
   color: white;
@@ -135,7 +135,7 @@ h1 {
 }
 
 @media (max-width: 725px) {
-  #searchlistitems {
+  .searchlistitems {
     padding: 10px 0;
     
     letter-spacing: .5px;
