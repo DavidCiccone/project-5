@@ -1,17 +1,23 @@
 var menuOut = true;
-$("#menu-button").click(function() {
+
+function slide(){
   if (menuOut){
       menuOut = false;
       $(".overmap").animate({
-        "left": "-340px"
-      }, "slow");
+        "left": "-355px"
+      }, "slow");      
        if ($(window).width() < 400) {
        $(".overmap2").animate({
-        "left": "-340px"
-      }, "slow");}
+        "left": "-355px"
+      }, "slow");} 
+if ($(window).width() < 400) {
       $("#menu-button").animate({
-        "left": "60px"
+        "left": "64px"
       }, "slow");
+    } else {
+          $("#menu-button").animate({
+        "left": "70px"
+      }, "slow");}
   }else{
       menuOut = true;
       $(".overmap").animate({
@@ -25,4 +31,14 @@ $("#menu-button").click(function() {
         "left": 0
       }, "slow");
   }
+}
+
+$("#menu-button").click(function() {
+  slide();
 });
+ 
+ if($(window).width() < 400) {
+$(".search-font").click(function() {
+  slide();
+});
+}
