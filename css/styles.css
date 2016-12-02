@@ -18,7 +18,7 @@ body {
 	padding: 5px 0;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
-	display: absolute;
+	display: fixed;
 	}
 
   .search-font {
