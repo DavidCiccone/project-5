@@ -14,12 +14,11 @@ body {
   }
 
 #searchbox {
-	
-	
 	width: 250px;
 	padding: 5px 0;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
+	display: absolute;
 	}
 
   .search-font {
